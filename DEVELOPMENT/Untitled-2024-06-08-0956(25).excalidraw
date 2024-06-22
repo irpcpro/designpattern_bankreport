@@ -10901,10 +10901,10 @@
     {
       "id": "WNZi8Hjmjh69eOVx6HrNh",
       "type": "text",
-      "x": 1532.4656280348265,
-      "y": 1144.242682874518,
-      "width": 183.21715176020416,
-      "height": 166.1927974398525,
+      "x": 1528.344703829092,
+      "y": 1159.9771207509589,
+      "width": 187,
+      "height": 120.8674890471655,
       "angle": 0,
       "strokeColor": "#f08c00",
       "backgroundColor": "transparent",
@@ -10920,20 +10920,20 @@
       "index": "b8QV",
       "roundness": null,
       "seed": 1111576805,
-      "version": 680,
-      "versionNonce": 1572906987,
+      "version": 752,
+      "versionNonce": 118755595,
       "isDeleted": false,
       "boundElements": null,
-      "updated": 1719039923643,
+      "updated": 1719061785151,
       "link": null,
       "locked": false,
-      "text": "Check For ProcessExists\n    IF (status == 'processing')\n            bank->Undo()\n            update log => cancelled\n            insert log => processing\n    ELSE\n            bank->Do()\n            insert log => processing\n\nBank => done\nupdate log => done",
+      "text": "Check For ProcessExists\n    IF (status == 'processing')\n            update log => cancelled\n            bank->Undo()\n\ncreate new log => processing\nbank->Do()\nupdate log => done",
       "fontSize": 13.137770548604948,
       "fontFamily": 2,
       "textAlign": "left",
       "verticalAlign": "top",
       "containerId": null,
-      "originalText": "Check For ProcessExists\n    IF (status == 'processing')\n            bank->Undo()\n            update log => cancelled\n            insert log => processing\n    ELSE\n            bank->Do()\n            insert log => processing\n\nBank => done\nupdate log => done",
+      "originalText": "Check For ProcessExists\n    IF (status == 'processing')\n            update log => cancelled\n            bank->Undo()\n\ncreate new log => processing\nbank->Do()\nupdate log => done",
       "autoResize": true,
       "lineHeight": 1.15
     },
@@ -10961,8 +10961,8 @@
         "type": 2
       },
       "seed": 1110309099,
-      "version": 156,
-      "versionNonce": 838672581,
+      "version": 159,
+      "versionNonce": 1965506853,
       "isDeleted": false,
       "boundElements": [
         {
@@ -10974,14 +10974,14 @@
           "type": "arrow"
         }
       ],
-      "updated": 1719039929491,
+      "updated": 1719060854961,
       "link": null,
       "locked": false
     },
     {
       "type": "arrow",
-      "version": 559,
-      "versionNonce": 74312101,
+      "version": 627,
+      "versionNonce": 1097611077,
       "index": "b8T",
       "isDeleted": false,
       "id": "fC4-7RY0QiQrAJZVpD4Rd",
@@ -10995,7 +10995,7 @@
       "y": 1356.7268837086667,
       "strokeColor": "#f08c00",
       "backgroundColor": "transparent",
-      "width": 0.9952967617423383,
+      "width": 0.8015253548214787,
       "height": 65.07461483604584,
       "seed": 1991989829,
       "groupIds": [],
@@ -11004,17 +11004,17 @@
         "type": 2
       },
       "boundElements": [],
-      "updated": 1719040447499,
+      "updated": 1719060854962,
       "link": null,
       "locked": false,
       "startBinding": {
         "elementId": "EEiDtA9iD2YM7C0DMozXI",
-        "focus": -0.012085598766179475,
+        "focus": -0.0358541887636315,
         "gap": 2.4850336800663513
       },
       "endBinding": {
         "elementId": "ccI0qOTbNj_06mcnLech9",
-        "focus": 0.000028174717867144545,
+        "focus": 0.01453825867998629,
         "gap": 1
       },
       "lastCommittedPoint": null,
@@ -11026,8 +11026,8 @@
           0
         ],
         [
-          0.1937714069208596,
-          32.66477734455657
+          -0.6426113511959102,
+          36.966174386299144
         ],
         [
           -0.8015253548214787,
@@ -11040,8 +11040,8 @@
       "type": "arrow",
       "x": 1616.6954377710472,
       "y": 1027.9701041785418,
-      "width": 1.0260879359400406,
-      "height": 72.77681176578471,
+      "width": 0.2619184971044888,
+      "height": 70.82711251785645,
       "angle": 0,
       "strokeColor": "#f08c00",
       "backgroundColor": "transparent",
@@ -11057,11 +11057,11 @@
         "type": 2
       },
       "seed": 301227819,
-      "version": 538,
-      "versionNonce": 1445623723,
+      "version": 675,
+      "versionNonce": 1779104741,
       "isDeleted": false,
       "boundElements": null,
-      "updated": 1719040442995,
+      "updated": 1719060854962,
       "link": null,
       "locked": false,
       "points": [
@@ -11070,24 +11070,24 @@
           0
         ],
         [
-          -0.16456185676611312,
-          36.59113425227906
+          -0.2619184971044888,
+          38.46313475244324
         ],
         [
-          -1.0260879359400406,
-          72.77681176578471
+          -0.1730945149715808,
+          70.82711251785645
         ]
       ],
       "lastCommittedPoint": null,
       "startBinding": {
         "elementId": "3yJBsZeiPOYSWRHrWe3o-",
-        "focus": -0.028318204151158703,
+        "focus": -0.029989952388779193,
         "gap": 4.313835139245725
       },
       "endBinding": {
         "elementId": "EEiDtA9iD2YM7C0DMozXI",
-        "focus": -0.013816467955340946,
-        "gap": 2.5149112584346653
+        "focus": 0.02010242270870171,
+        "gap": 4.4759271386332955
       },
       "startArrowhead": "arrow",
       "endArrowhead": "arrow"
