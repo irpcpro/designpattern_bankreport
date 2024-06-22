@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('factory_report_cmmand_client_queue_logs', function (Blueprint $table) {
+        Schema::create('factory_report_command_client_queue_logs', function (Blueprint $table) {
             $table->id();
             $table->string('bank_enum');
             $table->string('status_enum');
@@ -25,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('factory_report_cmmand_client_queue_logs');
+        Schema::dropIfExists('factory_report_command_client_queue_logs');
     }
 };

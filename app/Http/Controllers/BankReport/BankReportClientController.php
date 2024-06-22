@@ -10,7 +10,7 @@ class BankReportClientController extends Controller {
     public function index(){
 
         $factoryReportBankCmd = new factoryReportBankCommand();
-        $factoryReportBankCmd->reportBank();
+        $factoryReportBankCmd->reportBanks();
 
     }
 
