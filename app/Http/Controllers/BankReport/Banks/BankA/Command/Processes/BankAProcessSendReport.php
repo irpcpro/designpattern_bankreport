@@ -7,7 +7,7 @@ use App\Http\Controllers\BankReport\FactoryReportBankCommand\FactoryReportBankPr
 class BankAProcessSendReport implements FactoryReportBankProcessInterface {
 
     public function process(): mixed {
-        echo 'sending ...<br/>'; // TODO - fix
+        echo 'sending ...<br/>';
         return null;
     }
 
