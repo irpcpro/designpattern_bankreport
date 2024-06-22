@@ -9,11 +9,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class FactoryReportCommandClientQueueLog {
 
-    public function saveLog()
-    {
-
-    }
-
     public function getProcessLog(Banks $bank): Model | null {
         $processLog = FactoryReportCommandClientQueueLogs::query();
         $processLog->where('bank_enum', $bank->getEnum()->value);
