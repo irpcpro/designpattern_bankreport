@@ -3,6 +3,11 @@
 **version**
 <span>1.0.0</span>
 
+**By**
+<span>Ali Kargar</span>
+
+<hr>
+
 Managing `various form of reporting` of some data for uploading on `various servers`
 
 <h2>+ Explain the problem</h2>
