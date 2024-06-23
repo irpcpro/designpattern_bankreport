@@ -1,66 +1,57 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+<h1>Bank Report using DesignPattern</h1>
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+**version**
+<span>1.0.0</span>
 
-## About Laravel
+Managing `various form of reporting` of some data for uploading on `various servers`
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+<h2>+ Explain the problem</h2>
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+Imagine we have a massive dataset that includes banking transactions, and our project involves several well-known banks. We need to prepare a series of reports and provide them to the banks for end-of-month reconciliation checks. Our database fields contain specific data that is separated by bank type. The issue is that each bank wants its own format, so we need to generate multiple versions of the same report.
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+![Design-Pattern](./DEVELOPMENT/files/models.png)
 
-## Learning Laravel
+Now, we need to consider that the data mappings are also completely different, and the authentication methods for uploading these files vary for each bank. Each bank might have its own preferred service, which could include FTP, file upload services, or anything else with any type of authentication.
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+![Design-Pattern](./DEVELOPMENT/files/ways-uploading.png)
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+In addition to all these issues, each report also requires its own cancellation processes. For example, if one of these reports fails, all reports need to be deleted and generated again from the beginning. There might also be specific tasks that need to be performed in case of failure.
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+<h2>+ Solution</h2>
 
-## Laravel Sponsors
+To manage the reporting, processes specific to each bank, log checks for ongoing processes, and handle undo procedures in case of errors or job cancellations, we need to use certain design patterns. We can use commands, connectors, and factories to handle these processes.
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+Here is an overview of the general process:
 
-### Premium Partners
+<ul>
+    <li><b>Commands</b>: These will handle the specific tasks required for each bank, including generating reports in different formats and managing data mappings.</li>
+    <li><b>Connectors</b>: These will manage the different upload methods and authentication processes for each bank, such as FTP, file upload services, etc.</li>
+    <li><b>Factories</b>: These will help create the necessary objects for each bank’s specific requirements, ensuring that each report is generated and uploaded according to the bank’s preferred method.</li>
+</ul>
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
+By using these patterns, we can streamline the process, ensure flexibility for different bank requirements, and handle errors more efficiently.
 
-## Contributing
+<h2>+ System Design</h2>
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+![System-Design](./DEVELOPMENT/system-design.png)
 
-## Code of Conduct
+<h2>+ Directories</h2>
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+Additionally, the project directory will be structured so that adding a new bank won't require changes to the existing systems. You will only need to develop the specific configurations and processes for the new bank.
 
-## Security Vulnerabilities
+Here's the full approach:
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+<ul>
+    <li>Commands: Handle specific tasks for each bank, such as report generation and data mapping.</li>
+    <li>Connectors: Manage different upload methods and authentication processes for each bank.</li>
+    <li>Factories: Create objects based on each bank’s requirements, ensuring proper report generation and uploading.</li>
+    <li>Project Directory Structure: Organize the directory so that adding a new bank only involves developing new configurations and processes specific to that bank, without altering the existing system.</li>
+</ul>
 
-## License
+By following this approach, the system remains flexible and scalable, allowing for easy integration of new banks with minimal effort.
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+
+![Explore-Files](./DEVELOPMENT/files/explore-files.png)
+
+In this example, only a few configuration files and command scripts need to be added for each new bank. These files will set the necessary configurations for the bank, ensuring that the reporting operations include the new bank as well.
+
